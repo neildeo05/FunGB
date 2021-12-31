@@ -7,10 +7,13 @@
 #include "registers.h"
 #include "memory.h"
 #include "opcodes.h"
+#include "fetch.h"
 
 //TODO: Change this from decode to execute, because decode step is not necessary when the instructions are so definite
+// Return the opcode for debugging purposes
+// Execute based on the opcode
 Opcode
-decode(unsigned char op) 
+decode_and_execute(unsigned char op, unsigned char* rom) 
 {
 	Opcode ret = {0};
 	switch(op) {
@@ -23,14 +26,20 @@ decode(unsigned char op)
 		case 0x01:
 		{
 		// Load u16 into register BC
-		ret = (Opcode) {.type=OP_LD, .instruction="ld bc, %d", .length = 2, .byte = 0x01};
-		break;
+      ret = (Opcode) {.type=OP_LD, .instruction="ld bc, %d", .length = 2, .byte = 0x01};
+      break;
 		}
 		case 0x02:
 		{
-		// Load (BC) into a
-		ret = (Opcode) {.type = OP_LD, .instruction="ld (bc), a", .length = 1};
+      ret = (Opcode) {.type = OP_LD, .instruction="ld (bc), a", .length = 1, .byte=0x02};
+      printf("%x\n", fetch(rom, &regfile.pc));
+      break;
 		}
+    case 0x03:
+    {
+      ret = (Opcode) {.type = OP_INC, .instruction="inc bc", .length = 1};
+      break;
+    }
 	}
 	return ret;
 }
