@@ -4,7 +4,8 @@
 typedef enum {
   OP_NOP,
   OP_LD,
-  OP_INC
+  OP_INC,
+  OP_JP,
 } OP_TYPE;
 
 typedef struct {

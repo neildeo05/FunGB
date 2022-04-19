@@ -77,7 +77,7 @@ uint16_t read16(uint16_t address)
 	unsigned char msb = read8(address + 0x1);
 	return (msb << 8) | lsb;
 }
-void write_16(uint16_t address, uint16_t val)
+void write16(uint16_t address, uint16_t val)
 {
 	write8(address, (unsigned char) (val & 0xFF));
 	write8(address + 0x1, (unsigned char) (val >> 8) & 0xFF);
