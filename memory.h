@@ -81,7 +81,8 @@ void write16(uint16_t address, uint16_t val)
 {
 	write8(address, (unsigned char) (val & 0xFF));
 	write8(address + 0x1, (unsigned char) (val >> 8) & 0xFF);
-
 }
+
+//TODO: Add support for setting address bus pins high/low, based on data that needs to be sent, and word size
 
 #endif
