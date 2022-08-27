@@ -11,6 +11,6 @@ $ ./main
 **Requires a .gb ROM file**
 
 
-**Still under development
+**Still under development**
 
 
