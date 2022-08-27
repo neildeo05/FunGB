@@ -1,6 +1,7 @@
 #ifndef OPCODES_H_
 #define OPCODES_H_
 
+//TODO: More opcodes to be implemented from 6502
 typedef enum {
   OP_NOP,
   OP_LD,
