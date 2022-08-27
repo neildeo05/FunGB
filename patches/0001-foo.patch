@@ -1,0 +1,27 @@
+From 336a05fa8d88835b894b511fb6cb9bb17d6a876b Mon Sep 17 00:00:00 2001
+From: neildeo05 <neilhdeo@gmail.com>
+Co-authored-by: flpyyp <flpyyp@users.noreply.github.com>
+Date: Fri, 26 Aug 2022 18:34:26 -0700
+Subject: [PATCH] foo
+
+---
+ memory.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/memory.h b/memory.h
+index ced00d5..a6ccff6 100644
+--- a/memory.h
++++ b/memory.h
+@@ -81,7 +81,8 @@ void write16(uint16_t address, uint16_t val)
+ {
+ 	write8(address, (unsigned char) (val & 0xFF));
+ 	write8(address + 0x1, (unsigned char) (val >> 8) & 0xFF);
+-
+ }
+ 
++//TODO: Add support for setting address bus pins high/low, based on data that needs to be sent, and word size
++
+ #endif
+-- 
+2.32.0 (Apple Git-132)
+
