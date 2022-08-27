@@ -11,6 +11,7 @@
 int main(void)
 {
 	unsigned char* rom = read_rom("copy.gb");
+  //Arbitrary 0x100 address, but should jump to FFFC and FFFD to see exactly where to read (from Ben Eater's 65c02 videos)
 	regfile.pc = 0x100;
   unsigned int program_size = 10;
   unsigned char op;
