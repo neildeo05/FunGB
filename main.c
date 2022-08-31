@@ -18,9 +18,13 @@ int main(void)
   for(int i = 0; i < program_size; i++){
     op = fetch(rom, &regfile.pc);
     Opcode decoded_op = decode_and_execute(op, rom);
+
     printf("Instruction: %s, with length %d\n", decoded_op.instruction, decoded_op.length);
   }
 
 	free(rom);
 }
 
+
+
+//TODO: Add suport for loading roms in browser using WebAssembly
