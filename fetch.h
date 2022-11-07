@@ -2,7 +2,6 @@
 #define FETCH_H_
 #include <stdio.h>
 #include <stdlib.h>
-// I like using unsigned char for bytes, and uint16_t for shorts cause it feels more semantic and cool for some reason
 #include <stdint.h>
 
 unsigned char* read_rom(char* filename)
@@ -21,6 +20,7 @@ unsigned char* read_rom(char* filename)
 unsigned char fetch(unsigned char* rom, uint16_t* pc) 
 {
 	unsigned char ret = *(rom + *pc);
+  // Increment PC by one, every time fetch is called. This functionallity should be placed outide of the fetch instruction, and the incrementation should depend on the cycle
 	*pc += 0x1;
 	return ret;
 }
