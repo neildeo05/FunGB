@@ -1,0 +1,60 @@
+From 5d694f30afe7c4040ffdd267511779e2463af3fd Mon Sep 17 00:00:00 2001
+From: neildeo05 <neilhdeo@gmail.com>
+Co-authored-by: flpyyp <flpyyp.users.noreply.github.com>
+Date: Fri, 26 Aug 2022 18:41:17 -0700
+Subject: [PATCH] foo
+
+---
+ main.c                 |  1 +
+ patches/0001-foo.patch | 27 +++++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
+ create mode 100644 patches/0001-foo.patch
+
+diff --git a/main.c b/main.c
+index 330fc53..703b6d3 100644
+--- a/main.c
++++ b/main.c
+@@ -11,6 +11,7 @@
+ int main(void)
+ {
+ 	unsigned char* rom = read_rom("copy.gb");
++  //Arbitrary 0x100 address, but should jump to FFFC and FFFD to see exactly where to read (from Ben Eater's 65c02 videos)
+ 	regfile.pc = 0x100;
+   unsigned int program_size = 10;
+   unsigned char op;
+diff --git a/patches/0001-foo.patch b/patches/0001-foo.patch
+new file mode 100644
+index 0000000..03d199f
+--- /dev/null
++++ b/patches/0001-foo.patch
+@@ -0,0 +1,27 @@
++From 336a05fa8d88835b894b511fb6cb9bb17d6a876b Mon Sep 17 00:00:00 2001
++From: neildeo05 <neilhdeo@gmail.com>
++Co-authored-by: flpyyp <flpyyp@users.noreply.github.com>
++Date: Fri, 26 Aug 2022 18:34:26 -0700
++Subject: [PATCH] foo
++
++---
++ memory.h | 3 ++-
++ 1 file changed, 2 insertions(+), 1 deletion(-)
++
++diff --git a/memory.h b/memory.h
++index ced00d5..a6ccff6 100644
++--- a/memory.h
+++++ b/memory.h
++@@ -81,7 +81,8 @@ void write16(uint16_t address, uint16_t val)
++ {
++ 	write8(address, (unsigned char) (val & 0xFF));
++ 	write8(address + 0x1, (unsigned char) (val >> 8) & 0xFF);
++-
++ }
++ 
+++//TODO: Add support for setting address bus pins high/low, based on data that needs to be sent, and word size
+++
++ #endif
++-- 
++2.32.0 (Apple Git-132)
++
+-- 
+2.32.0 (Apple Git-132)
+
